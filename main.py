@@ -5,25 +5,24 @@ upper_case = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 symbols = '!@#$%^&*()'
 numbers = '1234567890'
 all = lower_case + upper_case + symbols + numbers
-length = 18
+length = 24
 password = ''
 for i in range(length):
     password += random.choice(all)
-print(password)
 
-account = 'Ozan'
-org = input('Enter the organization name: ')
-print(f'Password for {account} is {password} for {org}')
+email = input('Email Address : ')
+org = input('Org : ')
+print(f'Password for {email} is {password} for {org}')
 
 
-def write_to_file(account, org,password):
+def write_to_file(email, org,password):
     with open('passwords.txt', 'a+') as f:
-        f.write(account + '      ' + org + '      ')
+        f.write(email + '      ' + org + '      ')
         f.write(password + '\n')
         f.close()
 
 if __name__ == '__main__':
     if org in open('passwords.txt').read():
-        print('Account already exists')
+        print('email already exists')
     else:
-        write_to_file(account,org,password)
+        write_to_file(email,org,password)
